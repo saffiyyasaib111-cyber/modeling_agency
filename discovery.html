@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA // DISCOVERY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
+
+        body {
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        .heading-font { font-family: 'Syncopate', sans-serif; }
+
+        .glass-navbar {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .trend-card:hover {
+            border-color: #00f2ff;
+            transform: translateY(-8px);
+            background: rgba(0, 242, 255, 0.01);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .trend-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1);
+            transition: all 1s ease;
+        }
+
+        .trend-card:hover .trend-img {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+
+        /* MODAL ANIMATION */
+        #discovery-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(25px);
+            z-index: 200;
+            display: none;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .modal-content {
+            height: 100%;
+            overflow-y: auto;
+            padding: 120px 10% 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-[100] glass-navbar">
+        <div class="max-w-screen-2xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="aura_final.html" class="heading-font text-xl font-black italic">AURA<span class="text-cyan-500">.</span></a>
+            <div class="hidden md:flex items-center space-x-10">
+                <a href="portfolios.html" class="text-[9px] uppercase tracking-[0.3em] text-white/50 hover:text-white">Archive</a>
+                <a href="discovery.html" class="text-[9px] uppercase tracking-[0.3em] text-cyan-400">Discovery</a>
+                <a href="campaigns.html" class="text-[9px] uppercase tracking-[0.3em] text-white/50 hover:text-white">Campaigns</a>
+            </div>
+            <button class="p-2 border border-white/10 rounded"><i data-lucide="menu" class="w-4 h-4"></i></button>
+        </div>
+    </nav>
+
+    <main class="pt-32 md:pt-48 px-6 md:px-12 max-w-screen-2xl mx-auto pb-20">
+        <header class="mb-20">
+            <h2 class="heading-font text-[10px] tracking-[1em] text-white/30 uppercase mb-4">The Radar</h2>
+            <h1 class="text-6xl md:text-9xl font-light italic leading-none mb-6">Discovery<span class="text-cyan-500">.</span></h1>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Article 01 -->
+            <div class="trend-card group" onclick="showIntel('Hyper-Realism 2026', 'Trend Report', 'The 2026 aesthetic shift moves away from stylized low-poly avatars toward what we call \'The Uncanny Perfection.\' Our data shows a 40% increase in brand requests for digital-twin talent that is indistinguishable from physical reality under 8K resolution.')">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1000" class="trend-img">
+                </div>
+                <div class="p-8">
+                    <h3 class="heading-font text-xl uppercase italic mb-4">Hyper-Realism 2026</h3>
+                    <button class="heading-font text-[9px] tracking-widest text-cyan-400 group-hover:text-white transition-colors">Read Intel →</button>
+                </div>
+            </div>
+
+            <!-- Article 02 -->
+            <div class="trend-card group" onclick="showIntel('Milan Open Call', 'Scouting', 'AURA is expanding the Milan hub. We are seeking editorial talent with strong architectural features for a Q3 campaign. Candidates must be available for high-fidelity 3D scanning in our Milan Lab.')">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" class="trend-img">
+                </div>
+                <div class="p-8">
+                    <h3 class="heading-font text-xl uppercase italic mb-4">Aura Open Call: Milan</h3>
+                    <button class="heading-font text-[9px] tracking-widest text-cyan-400 group-hover:text-white transition-colors">Apply Now →</button>
+                </div>
+            </div>
+
+            <!-- Article 03 -->
+            <div class="trend-card group" onclick="showIntel('The Chrome Era', 'Aesthetics', 'Liquid metals and reflective chrome surfaces are no longer just for hardware. This season, AURA talent is being integrated into virtual environments where skin textures react to chrome reflections in real-time path-traced lighting.')">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000" class="trend-img">
+                </div>
+                <div class="p-8">
+                    <h3 class="heading-font text-xl uppercase italic mb-4">The Chrome Era</h3>
+                    <button class="heading-font text-[9px] tracking-widest text-cyan-400 group-hover:text-white transition-colors">Explore Data →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- UNIVERSAL DISCOVERY MODAL -->
+    <div id="discovery-modal">
+        <div class="fixed top-8 right-8 z-[210]">
+            <button onclick="closeIntel()" class="bg-white/10 p-4 rounded-full backdrop-blur-md border border-white/10 hover:bg-cyan-500 hover:text-black transition-all">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div class="modal-content max-w-4xl mx-auto">
+            <h4 id="modal-tag" class="heading-font text-cyan-400 text-[10px] tracking-[0.5em] uppercase mb-6"></h4>
+            <h2 id="modal-title" class="heading-font text-4xl md:text-7xl uppercase italic mb-12 leading-none"></h2>
+            
+            <div class="border-l border-white/10 pl-8 mb-12">
+                <p id="modal-body" class="text-2xl md:text-3xl font-light italic leading-relaxed text-white/70"></p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6">
+                <a href="request.html" class="bg-cyan-500 text-black px-10 py-4 heading-font text-[9px] tracking-widest uppercase font-black hover:bg-white transition-all text-center">
+                    Initialize Project
+                </a>
+                <button onclick="closeIntel()" class="border border-white/10 px-10 py-4 heading-font text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all">
+                    Return to Radar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="p-10 border-t border-white/5 text-center">
+        <p class="heading-font text-[8px] text-white/20 tracking-widest uppercase">© 2026 AURA RADAR // Trend Verification Active</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function showIntel(title, tag, body) {
+            const modal = document.getElementById('discovery-modal');
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-tag').innerText = tag;
+            document.getElementById('modal-body').innerText = body;
+
+            modal.style.display = 'block';
+            setTimeout(() => modal.style.opacity = '1', 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeIntel() {
+            const modal = document.getElementById('discovery-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
+    </script>
+</body>
+</html>

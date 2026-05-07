@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA // JOIN THE ROSTER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
+
+        body {
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        .heading-font { font-family: 'Syncopate', sans-serif; }
+
+        .glass-navbar {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem;
+            color: white;
+            outline: none;
+            transition: all 0.4s ease;
+            border-radius: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #00f2ff;
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        label {
+            display: block;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 8px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 0.5rem;
+        }
+
+        /* SUCCESS STATE */
+        #success-overlay {
+            position: fixed;
+            inset: 0;
+            background: #050505;
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .glow-bg {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.15) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-[100] glass-navbar">
+        <div class="max-w-screen-2xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="aura.html" class="heading-font text-xl font-black italic">AURA<span class="text-cyan-500">.</span></a>
+            <div class="hidden md:flex items-center space-x-10">
+                <a href="portfolios.html" class="text-[9px] uppercase tracking-[0.3em] text-white/50 hover:text-white">Archive</a>
+                <a href="discovery.html" class="text-[9px] uppercase tracking-[0.3em] text-white/50 hover:text-white">Discovery</a>
+                <a href="apply.html" class="text-[9px] uppercase tracking-[0.3em] text-cyan-400">Join Us</a>
+            </div>
+            <button class="p-2 border border-white/10 rounded"><i data-lucide="menu" class="w-4 h-4"></i></button>
+        </div>
+    </nav>
+
+    <main class="pt-32 md:pt-48 pb-20 px-6 max-w-3xl mx-auto">
+        <header class="mb-16">
+            <h2 class="heading-font text-[10px] tracking-[1em] text-cyan-400 uppercase mb-4">Talent Acquisition</h2>
+            <h1 class="text-5xl md:text-7xl font-light italic leading-tight">Apply to the Roster.</h1>
+            <p class="text-white/40 mt-6 text-lg italic">We are seeking digital-first talent for the 2026 global circuit. Our agents review all submissions within 72 hours.</p>
+        </header>
+
+        <form id="apply-form" onsubmit="handleApply(event)" class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="input-group">
+                    <label>Full Legal Name</label>
+                    <input type="text" required placeholder="e.g. Sophia Brown">
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="contact@example.com">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="input-group">
+                    <label>Base Location</label>
+                    <select required>
+                        <option value="" disabled selected>Select Hub</option>
+                        <option>Cape Town</option>
+                        <option>Pietermaritzburg</option>
+                        <option>Seoul</option>
+                        <option>NYC</option>
+                        <option>Other / Remote</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Primary Discipline</label>
+                    <select required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option>High Fashion / Runway</option>
+                        <option>Digital Twin / Avatar</option>
+                        <option>Commercial Editorial</option>
+                        <option>Creative Direction</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Portfolio Link / Social ID</label>
+                <input type="url" placeholder="https://instagram.com/yourname">
+            </div>
+
+            <div class="input-group">
+                <label>Brief Introduction</label>
+                <textarea rows="4" placeholder="Tell us about your vision..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-white text-black py-6 heading-font text-[10px] font-black tracking-[0.5em] uppercase hover:bg-cyan-500 transition-all flex items-center justify-center space-x-3 group">
+                <span>Submit Application</span>
+                <i data-lucide="upload-cloud" class="w-4 h-4 group-hover:animate-bounce"></i>
+            </button>
+        </form>
+    </main>
+
+    <!-- SUCCESS SCREEN -->
+    <section id="success-overlay">
+        <div class="glow-bg"></div>
+        <div class="mb-10 w-24 h-24 rounded-full border border-cyan-500/30 flex items-center justify-center bg-cyan-500/5">
+            <i data-lucide="shield-check" class="text-cyan-400 w-12 h-12"></i>
+        </div>
+        <h2 class="heading-font text-[10px] tracking-[1.5em] text-cyan-400 uppercase mb-6">Application Encrypted</h2>
+        <h1 class="text-6xl md:text-8xl font-light italic leading-none mb-6">Thank You.</h1>
+        <p class="text-white/50 text-xl md:text-2xl font-light max-w-xl mb-12 italic leading-relaxed">
+            Your data has been successfully integrated into the AURA mainframe. An agent will consult your profile and contact you shortly.
+        </p>
+        <a href="aura.html" class="border border-white/10 px-12 py-5 heading-font text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all">
+            Return to Homepage
+        </a>
+    </section>
+
+    <footer class="p-10 text-center opacity-20">
+        <p class="heading-font text-[8px] tracking-[0.5em] uppercase">AURA // Secure Intake Portal 2.0</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function handleApply(e) {
+            e.preventDefault();
+            
+            // Fade out the main content
+            const main = document.querySelector('main');
+            const footer = document.querySelector('footer');
+            main.style.opacity = '0';
+            main.style.transform = 'translateY(-20px)';
+            main.style.transition = 'all 0.6s ease';
+            footer.style.opacity = '0';
+
+            // Show success overlay
+            setTimeout(() => {
+                main.style.display = 'none';
+                const success = document.getElementById('success-overlay');
+                success.style.display = 'flex';
+                setTimeout(() => {
+                    success.style.opacity = '1';
+                }, 50);
+            }, 600);
+        }
+    </script>
+</body>
+</html>

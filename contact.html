@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA // CONTACT HUB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
+
+        body {
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        .heading-font { font-family: 'Syncopate', sans-serif; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 242, 255, 0.3);
+            background: rgba(0, 242, 255, 0.02);
+        }
+
+        input, textarea {
+            width: 100%;
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            color: white;
+            outline: none;
+            transition: border-color 0.4s;
+            font-size: 1.2rem;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #00f2ff;
+        }
+
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .glow-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .glow-button:hover::after { opacity: 1; }
+
+        #thank-you-state {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-[100] p-6 md:p-10">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+            <a href="aura_final.html" class="heading-font text-xl font-black italic">AURA<span class="text-cyan-500">.</span></a>
+            <a href="aura_final.html" class="p-2 border border-white/10 rounded-full hover:bg-white/5 transition-all">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </nav>
+
+    <main id="contact-main" class="pt-32 md:pt-48 pb-20 px-6 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+        
+        <!-- LEFT: INFO -->
+        <div class="space-y-12">
+            <div>
+                <h2 class="heading-font text-[10px] tracking-[1em] text-cyan-400 uppercase mb-4">Inquiries</h2>
+                <h1 class="text-6xl md:text-8xl font-light italic leading-none">Get in <br>Touch.</h1>
+            </div>
+
+            <div class="space-y-8">
+                <div class="group">
+                    <p class="heading-font text-[8px] text-white/30 tracking-widest uppercase mb-2">Digital Mail</p>
+                    <a href="mailto:saffiyyasaib111@gmail.com" class="text-2xl md:text-3xl hover:text-cyan-400 transition-colors">saffiyyasaib111@gmail.com</a>
+                </div>
+
+                <div class="group">
+                    <p class="heading-font text-[8px] text-white/30 tracking-widest uppercase mb-2">Social Nodes</p>
+                    <div class="flex space-x-6 pt-2">
+                        <a href="#" class="hover:text-cyan-400 transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors"><i data-lucide="framer" class="w-6 h-6"></i></a>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <p class="heading-font text-[8px] text-white/30 tracking-widest uppercase mb-2">Headquarters</p>
+                    <p class="text-xl italic text-white/60">Gauteng, South Africa <br>Global Remote Ops</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: FORM -->
+        <div class="glass-card p-8 md:p-12 relative">
+            <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-10">
+                <div>
+                    <label class="heading-font text-[8px] tracking-widest text-white/40 uppercase">Your Name</label>
+                    <input type="text" required placeholder="e.g. Alex North">
+                </div>
+                <div>
+                    <label class="heading-font text-[8px] tracking-widest text-white/40 uppercase">Subject</label>
+                    <input type="text" placeholder="Project Inquiry">
+                </div>
+                <div>
+                    <label class="heading-font text-[8px] tracking-widest text-white/40 uppercase">Message</label>
+                    <textarea rows="4" required placeholder="Describe your vision..."></textarea>
+                </div>
+
+                <button type="submit" class="glow-button w-full bg-white text-black py-6 heading-font text-[10px] font-black tracking-[0.5em] uppercase hover:bg-cyan-500 transition-all flex items-center justify-center space-x-3">
+                    <span>Send Signal</span>
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- THANK YOU AGENT STATE -->
+    <section id="thank-you-state" class="fixed inset-0 bg-black flex flex-col items-center justify-center text-center p-6 z-[150]">
+        <div class="w-24 h-24 rounded-full border border-cyan-500/30 flex items-center justify-center mb-10 bg-cyan-500/5 relative">
+            <div class="absolute inset-0 rounded-full animate-ping bg-cyan-500/20"></div>
+            <i data-lucide="check" class="text-cyan-400 w-10 h-10"></i>
+        </div>
+        <h2 class="heading-font text-[10px] tracking-[1.5em] text-cyan-400 uppercase mb-6">Transmission Received</h2>
+        <h1 class="text-6xl md:text-9xl font-light italic mb-8">Thank You.</h1>
+        <p class="text-white/40 text-xl italic max-w-lg mb-12">
+            An agent will consult your inquiry and respond to <span class="text-white">saffiyyasaib111@gmail.com</span> shortly.
+        </p>
+        <a href="aura_final.html" class="border border-white/10 px-12 py-5 heading-font text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-all">
+            Return to Core
+        </a>
+    </section>
+
+    <script>
+        lucide.createIcons();
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const main = document.getElementById('contact-main');
+            const thanks = document.getElementById('thank-you-state');
+
+            // Animation transition
+            main.style.opacity = '0';
+            main.style.transform = 'scale(0.95)';
+            main.style.transition = 'all 0.8s ease';
+
+            setTimeout(() => {
+                main.style.display = 'none';
+                thanks.style.display = 'flex';
+                setTimeout(() => {
+                    thanks.style.opacity = '1';
+                }, 50);
+            }, 800);
+        }
+    </script>
+</body>
+</html>
